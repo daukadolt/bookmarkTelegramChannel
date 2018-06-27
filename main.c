@@ -19,6 +19,13 @@ int main() {
 
     configFile = fopen(homedir, "r");
 
+    char token[45];
+
+    if(configFile) {
+        fscanf(configFile, "%s", token);
+    }
+
+    printf("%s\n", token);
 
 // gcc -o dauletTest main.c
 // 
