@@ -6,6 +6,10 @@
 #include <curl/curl.h>
 #include <stdlib.h>
 
+size_t write_data(void *buffer, size_t size, size_t nmemb, void *userp)
+{
+   return size * nmemb;
+}
 
 int main(int argc, char **argv) {
 
@@ -17,7 +21,7 @@ int main(int argc, char **argv) {
 
 
     char *text = (char*) malloc(100 * sizeof(char));
-    printf("Text: ");
+    printf("URL: ");
     scanf("%255s", text);
 
 
@@ -51,7 +55,7 @@ int main(int argc, char **argv) {
     sprintf(URL, "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s", token, channel_name, text);
     
 
-
+    // curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
 
 
     printf("\n%s\n", URL);
